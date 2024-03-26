@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Marina Papadopoulou" />
+
+
+<title>3 - The Swarm-Verse</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">3 - The Swarm-Verse</h1>
+<h4 class="author">Marina Papadopoulou</h4>
+
+
+
+<p>After having analyzed our data, we can examine the intra- and
+inter-specific variation present across datasets through dimensionality
+reduction techniques (create ‘swarm spaces’).</p>
+<div id="load-data" class="section level2">
+<h2>3.1 Load data</h2>
+<p>Load the metrics of collective motion calculated previously. Include
+the events you want to compare in a swarm space.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(swaRmverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load pacakge data for many species</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;multi_species_metrics&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## A] Create the swarm space for this data only:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> multi_species_metrics</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## B] Or bind with new data if continuing from step2</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;new_species_metrics&quot;</span>) <span class="do">## loads the output of step 2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>new_species_tobind <span class="ot">&lt;-</span> new_species_metrics[,<span class="sc">!</span><span class="fu">colnames</span>(new_species_metrics) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;event_dur&#39;</span>, <span class="st">&#39;N&#39;</span>, <span class="st">&#39;set&#39;</span>, <span class="st">&#39;start_time&#39;</span>)] <span class="co"># remove columns not needed for the swarm space</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(multi_species_metrics, new_species_tobind)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## C] Or to use just the new data (overwrites previous command, comment out to compare with the other species):</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> new_species_metrics</span></code></pre></div>
+</div>
+<div id="build-swarm-space" class="section level2">
+<h2>3.2 Build swarm space</h2>
+<p>Create new swarm space with PCA analysis:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>new_pca <span class="ot">&lt;-</span> <span class="fu">swarm_space</span>(<span class="at">metrics_data =</span> all_data,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">space_type =</span> <span class="st">&quot;pca&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(new_pca<span class="sc">$</span>swarm_space,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                 ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> species)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Check what each principal component represents and get the info of
+each event:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pca_info <span class="ot">&lt;-</span> new_pca<span class="sc">$</span>pca<span class="sc">$</span>rotation[, new_pca<span class="sc">$</span>pca<span class="sc">$</span>sdev <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pca_info)</span></code></pre></div>
+<pre><code>##                          PC1         PC2          PC3         PC4
+## mean_mean_nnd   -0.120557087  0.47823789 -0.198936000  0.51970748
+## mean_sd_nnd      0.006773648  0.19922584 -0.693308303  0.22378356
+## sd_mean_nnd      0.096140524  0.33849821  0.445329654 -0.12538046
+## mean_pol         0.169686225  0.42069450 -0.035516371 -0.32822763
+## sd_pol           0.551102219 -0.02143889 -0.114126771 -0.07014666
+## stdv_speed       0.535969436  0.10620905  0.006046155 -0.00581108
+## mean_sd_front    0.168816754 -0.01838288  0.267740886  0.61225187
+## mean_mean_bangl -0.048978601  0.53599416  0.352446821  0.09556011
+## mean_shape       0.154168969 -0.37491589  0.242066756  0.40886134
+## sd_shape         0.549309319 -0.01015417 -0.112278306  0.01629187</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ref_data <span class="ot">&lt;-</span> new_pca<span class="sc">$</span>ref</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ref_data)</span></code></pre></div>
+<pre><code>##   event N             set          start_time event_dur       species
+## 1     1 8 2020-02-01_ctx1 2020-02-01 12:00:21      1.28 new_species_1
+## 2     2 8 2020-02-01_ctx1 2020-02-01 12:00:23      1.12 new_species_1
+## 3     3 7 2020-02-01_ctx1 2020-02-01 12:00:25      1.08 new_species_1
+## 4     4 8 2020-02-01_ctx1 2020-02-01 12:00:26      0.04 new_species_1
+## 5     5 8 2020-02-01_ctx1 2020-02-01 12:00:27      0.32 new_species_1
+## 6     6 7 2020-02-01_ctx1 2020-02-01 12:00:28      7.80 new_species_1</code></pre>
+<p>Or create a new swarm space with tSNE to better study the local
+structure of the data:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>new_tsne <span class="ot">&lt;-</span> <span class="fu">swarm_space</span>(<span class="at">metrics_data =</span> all_data,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">space_type =</span> <span class="st">&quot;tsne&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tsne_rand_seed =</span> <span class="dv">2023</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tsne_perplexity =</span> <span class="dv">10</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                              )</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;t-SNE was run with the following parameters:&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;t-SNE was run with the following parameters:&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(new_tsne<span class="sc">$</span>tsne_setup)</span></code></pre></div>
+<pre><code>##          prop  vals
+## 1  perplexity    10
+## 2 random_seed  2023
+## 3    max_iter 10000</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(new_tsne<span class="sc">$</span>swarm_space, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Y, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="expand-existing-swarm-space" class="section level2">
+<h2>3.3 Expand existing swarm space</h2>
+<p>Starting from previously generated PCA swarm space, add new data:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;multi_species_pca&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;multi_species_pca_data&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>new_pca_data <span class="ot">&lt;-</span> <span class="fu">expand_pca_swarm_space</span>(<span class="at">metrics_data =</span> new_species_metrics,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">pca_space =</span> multi_species_pca)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>expanded_pca <span class="ot">&lt;-</span> <span class="fu">rbind</span>(multi_species_pca_data, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                      new_pca_data)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(expanded_pca,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>   ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>   ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="your-own-swarm-space" class="section level2">
+<h2>3.4 Your own swarm space</h2>
+<p>To compare several new datasets, one should run the analysis until
+the end of step 2 for each one of them. Then simply bind the result
+datasets together and run the swarm spaces as above:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;new_species_metrics&quot;</span>) <span class="do">## loads the output of step 2</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Use another dataset:</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">get</span>(<span class="fu">data</span>(<span class="st">&quot;tracks&quot;</span>, <span class="at">package =</span> <span class="st">&quot;trackdf&quot;</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>data_df<span class="sc">$</span>set <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data_df<span class="sc">$</span>t)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>another_species <span class="ot">&lt;-</span> <span class="fu">col_motion_metrics_from_raw</span>(data_df,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">mov_av_time_window =</span> <span class="dv">10</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">step2time =</span> <span class="dv">1</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">geo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                                <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                <span class="at">speed_lim =</span> <span class="dv">0</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                                <span class="at">pol_lim =</span> <span class="fl">0.3</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                                <span class="at">parallelize_all =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                                )</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>another_species<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="st">&quot;new_species_2&quot;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Bind all the datasets you want to compare here</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(another_species, new_species_metrics)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>new_pca <span class="ot">&lt;-</span> <span class="fu">swarm_space</span>(<span class="at">metrics_data =</span> all_data,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">space_type =</span> <span class="st">&quot;pca&quot;</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(new_pca<span class="sc">$</span>swarm_space,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>                ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> species)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>                ) <span class="sc">+</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
