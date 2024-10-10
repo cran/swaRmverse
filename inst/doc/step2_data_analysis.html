@@ -523,13 +523,13 @@ species or contexts, a new species id column should be added:</p>
 ## 4     4 8 2020-02-01_ctx1 2020-02-01 12:00:26      199.2923    73.48385
 ## 5     5 8 2020-02-01_ctx1 2020-02-01 12:00:27      156.2709   132.57649
 ## 6     6 7 2020-02-01_ctx1 2020-02-01 12:00:28      158.0017    96.51129
-##   sd_mean_nnd  mean_pol    sd_pol stdv_speed mean_sd_front mean_mean_bangl
-## 1    3.542036 0.3400859 0.1434671  1.8786978     0.2875128        1.637330
-## 2   24.690932 0.3337442 0.1693607  1.6556076     0.2743454        1.238517
-## 3   27.403410 0.3341782 0.1962730  1.8533976     0.3199358        1.778552
-## 4   11.876152 0.4152229 0.0000000  0.0000000     0.3290209        1.754450
-## 5    4.002438 0.2857535 0.1386557  0.8965682     0.2441024        1.513099
-## 6   26.039637 0.4056536 0.1758167  1.9728170     0.2924780        1.693242
+##   sd_mean_nnd  mean_pol    sd_pol  cv_speed mean_sd_front mean_mean_bangl
+## 1    3.542036 0.3400859 0.1434671 1.8786978     0.2875128        1.637330
+## 2   24.690932 0.3337442 0.1693607 1.6556076     0.2743454        1.238517
+## 3   27.403410 0.3341782 0.1962730 1.8533976     0.3199358        1.778552
+## 4   11.876152 0.4152229 0.0000000 0.0000000     0.3290209        1.754450
+## 5    4.002438 0.2857535 0.1386557 0.8965682     0.2441024        1.513099
+## 6   26.039637 0.4056536 0.1758167 1.9728170     0.2924780        1.693242
 ##   mean_shape  sd_shape event_dur       species
 ## 1  0.7355342 0.4642304      1.28 new_species_1
 ## 2  0.7145053 0.3854631      1.12 new_species_1
@@ -556,8 +556,8 @@ average nearest neighbor distance<br />
 the event</li>
 <li><em>sd_pol</em>: the standard deviation of the group’s polarization
 during the event</li>
-<li><em>stdv_speed</em>: the CV (coefficient of variation) of the
-group’s average speed during the event</li>
+<li><em>cv_speed</em>: the CV (coefficient of variation) of the group’s
+average speed during the event</li>
 <li><em>mean_sd_front</em>: the average standard deviation of the
 individuals’ frontness to their nearest neighbor during an event</li>
 <li><em>mean_mean_bangl</em>: the temporal average of the group’s
